@@ -1,6 +1,6 @@
 from django_services import service
-from ..models import IntegrationType
+from ..models import CredentialType
 
 
-class IntegrationTypeService(service.CRUDService):
-    model_class = IntegrationType
+class CredentialTypeService(service.CRUDService):
+    model_class = CredentialType

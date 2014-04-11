@@ -1,6 +1,6 @@
 from django_services import service
-from ..models import IntegrationCredential
+from ..models import Credential
 
 
-class IntegrationCredentialService(service.CRUDService):
-    model_class = IntegrationCredential
+class CredentialService(service.CRUDService):
+    model_class = Credential
