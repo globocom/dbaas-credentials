@@ -6,4 +6,5 @@ from django.contrib import admin
 class CredentialAdmin(admin.ModelAdmin):
     search_fields = ("endpoint",)
     list_display = ("endpoint","user",)
+    filter_horizontal = ("environments",)
     save_on_top = True
