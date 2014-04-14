@@ -27,6 +27,8 @@ class IntegrationCredentialNFSaaSFactory(factory.DjangoModelFactory):
     token = factory.Sequence(lambda n: 'token_{0}'.format(n))
     secret = factory.Sequence(lambda n: 'secret_{0}'.format(n))
     endpoint =factory.Sequence(lambda n: 'www.endpoint.glb_{0}'.format(n))
+    project = factory.Sequence(lambda n: 'project.glb_{0}'.format(n))
+    team = factory.Sequence(lambda n: 'team.glb_{0}'.format(n))
     
     @factory.post_generation
     def environments(self, create, extracted, **kwargs):
