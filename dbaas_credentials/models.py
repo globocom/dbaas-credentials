@@ -13,10 +13,12 @@ from django_extensions.db.fields.encrypted import EncryptedCharField
 class CredentialType(BaseModel):
     CLOUDSTACK = 1
     NFSAAS = 2
+    DBMONITOR = 3
     
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
         (NFSAAS, 'NFS as a Service'),
+        (DBMONITOR, 'Database Monitor')
     )
     name = models.CharField(verbose_name=_("Name"),
                                          max_length=100,
