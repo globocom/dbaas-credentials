@@ -56,8 +56,8 @@ class Credential(BaseModel):
     environments = models.ManyToManyField(Environment)
     project = models.CharField(verbose_name=_("Project"),
                             max_length=255,
-                            blank=False,
-                            null=False)
+                            blank=True,
+                            null=True)
     team = models.CharField(verbose_name=_("Team"),
                             max_length=255,
                             blank=True,
