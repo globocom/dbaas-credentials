@@ -15,12 +15,14 @@ class CredentialType(BaseModel):
     NFSAAS = 2
     DBMONITOR = 3
     ZABBIX = 4
+    FLIPPER = 5
     
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
         (NFSAAS, 'NFS as a Service'),
         (DBMONITOR, 'Database Monitor'),
         (ZABBIX, 'Zabbix'),
+        (FLIPPER, 'Flipper'),
     )
     name = models.CharField(verbose_name=_("Name"),
                                          max_length=100,
