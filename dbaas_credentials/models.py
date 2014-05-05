@@ -15,12 +15,14 @@ class CredentialType(BaseModel):
     NFSAAS = 2
     DBMONITOR = 3
     ZABBIX = 4
+    FLIPPER = 5
     
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
         (NFSAAS, 'NFS as a Service'),
         (DBMONITOR, 'Database Monitor'),
         (ZABBIX, 'Zabbix'),
+        (FLIPPER, 'Flipper'),
     )
     name = models.CharField(verbose_name=_("Name"),
                                          max_length=100,
@@ -56,8 +58,8 @@ class Credential(BaseModel):
     environments = models.ManyToManyField(Environment)
     project = models.CharField(verbose_name=_("Project"),
                             max_length=255,
-                            blank=False,
-                            null=False)
+                            blank=True,
+                            null=True)
     team = models.CharField(verbose_name=_("Team"),
                             max_length=255,
                             blank=True,
