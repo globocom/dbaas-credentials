@@ -49,7 +49,10 @@ docs:
 
 release: clean
 	python setup.py sdist upload
-	python setup.py bdist_wheel upload
+
+release_globo: clean
+	python setup.py sdist upload -r ipypiglobo
+	python setup.py sdist upload -r pypiglobo
 
 dist: clean
 	python setup.py sdist
