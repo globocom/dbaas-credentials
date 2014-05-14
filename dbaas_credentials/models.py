@@ -17,7 +17,8 @@ class CredentialType(BaseModel):
     ZABBIX = 4
     FLIPPER = 5
     VM = 6
-    DATABASEINFRA = 7
+    MYSQL = 7
+    MONGODB = 8
     
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -26,7 +27,8 @@ class CredentialType(BaseModel):
         (ZABBIX, 'Zabbix'),
         (FLIPPER, 'Flipper'),
         (VM, 'Virtual machine initial credentials'),
-        (DATABASEINFRA, 'Database infra initial credentials'),
+        (DATABASEINFRAMYSQL, 'MySQL initial credentials'),
+        (DATABASEINFRAMYSQL, 'MongoDB initial credentials'),
     )
     name = models.CharField(verbose_name=_("Name"),
                                          max_length=100,
