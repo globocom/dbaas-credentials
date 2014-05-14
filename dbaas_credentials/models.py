@@ -26,9 +26,9 @@ class CredentialType(BaseModel):
         (DBMONITOR, 'Database Monitor'),
         (ZABBIX, 'Zabbix'),
         (FLIPPER, 'Flipper'),
-        (VM, 'Virtual machine initial credentials'),
-        (MYSQL, 'MySQL initial credentials'),
-        (MONGODB, 'MongoDB initial credentials'),
+        (VM, 'Virtual machine credentials'),
+        (MYSQL, 'MySQL credentials'),
+        (MONGODB, 'MongoDB credentials'),
     )
     name = models.CharField(verbose_name=_("Name"),
                                          max_length=100,
