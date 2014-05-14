@@ -27,8 +27,8 @@ class CredentialType(BaseModel):
         (ZABBIX, 'Zabbix'),
         (FLIPPER, 'Flipper'),
         (VM, 'Virtual machine initial credentials'),
-        (DATABASEINFRAMYSQL, 'MySQL initial credentials'),
-        (DATABASEINFRAMYSQL, 'MongoDB initial credentials'),
+        (MYSQL, 'MySQL initial credentials'),
+        (MONGODB, 'MongoDB initial credentials'),
     )
     name = models.CharField(verbose_name=_("Name"),
                                          max_length=100,
