@@ -16,6 +16,8 @@ class CredentialType(BaseModel):
     DBMONITOR = 3
     ZABBIX = 4
     FLIPPER = 5
+    VM = 6
+    DATABASEINFRA = 7
     
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -23,6 +25,8 @@ class CredentialType(BaseModel):
         (DBMONITOR, 'Database Monitor'),
         (ZABBIX, 'Zabbix'),
         (FLIPPER, 'Flipper'),
+        (VM, 'Initial credentials Virtual Machine'),
+        (DATABASEINFRA, 'Initial credentials DatabaseInfra')
     )
     name = models.CharField(verbose_name=_("Name"),
                                          max_length=100,
