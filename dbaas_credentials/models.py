@@ -26,7 +26,7 @@ class CredentialType(BaseModel):
         (ZABBIX, 'Zabbix'),
         (FLIPPER, 'Flipper'),
         (VM, 'Initial credentials Virtual Machine'),
-        (DATABASEINFRA, 'Initial credentials DatabaseInfra')
+        (DATABASEINFRA, 'Initial credentials DatabaseInfra'),
     )
     name = models.CharField(verbose_name=_("Name"),
                                          max_length=100,
