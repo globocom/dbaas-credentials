@@ -19,6 +19,7 @@ class CredentialType(BaseModel):
     VM = 6
     MYSQL = 7
     MONGODB = 8
+    DNSAPI = 9
     
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -29,6 +30,7 @@ class CredentialType(BaseModel):
         (VM, 'Virtual machine credentials'),
         (MYSQL, 'MySQL credentials'),
         (MONGODB, 'MongoDB credentials'),
+        (DNSAPI, 'DNS API'),
     )
     name = models.CharField(verbose_name=_("Name"),
                                          max_length=100,
