@@ -48,7 +48,7 @@ class CredentialType(BaseModel):
 
 class Credential(BaseModel):
 
-    user = models.CharField(verbose_name=_("User."),
+    user = models.CharField(verbose_name=_("User"),
                             max_length=100,
                             help_text=_("User used to authenticate."),
                             blank=True,
@@ -79,6 +79,9 @@ class Credential(BaseModel):
     def __unicode__(self):
         return "%s" % (self.id)
 
+    def environment(self):
+        return ', '.join([e.name for e in self.environments.all()])
+        
     class Meta:
         permissions = (
             ("view_integrationcredential", "Can view integration credential."),
