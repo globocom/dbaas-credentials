@@ -20,7 +20,8 @@ class CredentialType(BaseModel):
     MYSQL = 7
     MONGODB = 8
     DNSAPI = 9
-    
+    ACLAPI= 10
+
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
         (NFSAAS, 'NFS as a Service'),
@@ -31,6 +32,7 @@ class CredentialType(BaseModel):
         (MYSQL, 'MySQL credentials'),
         (MONGODB, 'MongoDB credentials'),
         (DNSAPI, 'DNS API'),
+        (ACLAPI, 'ACL API')
     )
     name = models.CharField(verbose_name=_("Name"),
                                          max_length=100,
@@ -42,7 +44,7 @@ class CredentialType(BaseModel):
         permissions = (
             ("view_integrationtype", "Can view integration type."),
         )
-    
+
 
 class Credential(BaseModel):
 
