@@ -21,6 +21,7 @@ class CredentialType(BaseModel):
     MONGODB = 8
     DNSAPI = 9
     ACLAPI= 10
+    LAAS = 11
 
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -32,7 +33,8 @@ class CredentialType(BaseModel):
         (MYSQL, 'MySQL credentials'),
         (MONGODB, 'MongoDB credentials'),
         (DNSAPI, 'DNS API'),
-        (ACLAPI, 'ACL API')
+        (ACLAPI, 'ACL API'),
+        (LAAS, 'Log as a Service')
     )
     name = models.CharField(verbose_name=_("Name"),
                                          max_length=100,
