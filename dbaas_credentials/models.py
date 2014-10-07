@@ -23,6 +23,7 @@ class CredentialType(BaseModel):
     ACLAPI= 10
     LAAS = 11
     LOGNIT = 12
+    NETWORKAPI = 13
 
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -36,7 +37,8 @@ class CredentialType(BaseModel):
         (DNSAPI, 'DNS API'),
         (ACLAPI, 'ACL API'),
         (LAAS, 'Log as a Service'),
-        (LOGNIT, 'Lognit')
+        (LOGNIT, 'Lognit'),
+        (NETWORKAPI, 'Network API')
     )
     name = models.CharField(verbose_name=_("Name"),
                                          max_length=100,
