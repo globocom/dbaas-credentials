@@ -2,13 +2,16 @@
 from __future__ import absolute_import, unicode_literals
 from util.models import BaseModel
 from django.db import models
+from django.core.cache import cache
 from django.utils.translation import ugettext_lazy as _
 from physical.models import Environment
 import logging
 import simple_audit
 from django_extensions.db.fields.encrypted import EncryptedCharField
 
+CACHE_MISS = object()
 
+LOG = logging.getLogger(__name__)
 
 class CredentialType(BaseModel):
     CLOUDSTACK = 1
@@ -92,6 +95,32 @@ class Credential(BaseModel):
         permissions = (
             ("view_integrationcredential", "Can view integration credential."),
         )
+    
+    def get_parameter_by_name(self, name):
+        Parameter.objects.get(name=name).value
+        try:
+            value = Parameter.objects.get(credential=self, name=name).value
+            LOG.debug("Parameter '%s': '%s'", name, value)
+            return value
+        except Parameter.DoesNotExist:
+            LOG.warning("Parameter %s not found" % name)
+            return None
+        except Exception, e:
+            LOG.warning("ops.. could not retrieve parameter value for %s: %s" % (name, e))
+            return None    
+        
 
 
-simple_audit.register(Credential, CredentialType)
+class Parameter(BaseModel):
+
+    name = models.CharField(verbose_name=_("Parameter name"), max_length=100)
+    value = models.CharField(verbose_name=_("Parameter value"), max_length=255)
+    description = models.CharField(verbose_name=_("Description"), max_length=255, null=True, blank=True)
+    credential = models.ForeignKey(Credential, related_name="credential_parameters")
+
+    class Meta:
+    	unique_together = (
+    		('credential', 'name'),
+    	)
+
+simple_audit.register(Credential, CredentialType, Parameter)
