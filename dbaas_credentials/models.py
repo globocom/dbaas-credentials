@@ -97,7 +97,6 @@ class Credential(BaseModel):
         )
     
     def get_parameter_by_name(self, name):
-        Parameter.objects.get(name=name).value
         try:
             value = Parameter.objects.get(credential=self, name=name).value
             LOG.debug("Parameter '%s': '%s'", name, value)
