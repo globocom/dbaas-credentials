@@ -27,6 +27,7 @@ class CredentialType(BaseModel):
     LAAS = 11
     LOGNIT = 12
     NETWORKAPI = 13
+    GRAPHITE = 14
 
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -41,7 +42,8 @@ class CredentialType(BaseModel):
         (ACLAPI, 'ACL API'),
         (LAAS, 'Log as a Service'),
         (LOGNIT, 'Lognit'),
-        (NETWORKAPI, 'Network API')
+        (NETWORKAPI, 'Network API'),
+        (GRAPHITE, 'Graphite'),
     )
     name = models.CharField(verbose_name=_("Name"),
                                          max_length=100,
@@ -90,12 +92,12 @@ class Credential(BaseModel):
 
     def environment(self):
         return ', '.join([e.name for e in self.environments.all()])
-        
+
     class Meta:
         permissions = (
             ("view_integrationcredential", "Can view integration credential."),
         )
-    
+
     def get_parameter_by_name(self, name):
         try:
             value = Parameter.objects.get(credential=self, name=name).value
@@ -106,8 +108,8 @@ class Credential(BaseModel):
             return None
         except Exception, e:
             LOG.warning("ops.. could not retrieve parameter value for %s: %s" % (name, e))
-            return None    
-        
+            return None
+
 
 
 class Parameter(BaseModel):
