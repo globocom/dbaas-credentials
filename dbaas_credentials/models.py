@@ -28,6 +28,7 @@ class CredentialType(BaseModel):
     LOGNIT = 12
     NETWORKAPI = 13
     GRAPHITE = 14
+    STATSD = 15
 
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -44,6 +45,7 @@ class CredentialType(BaseModel):
         (LOGNIT, 'Lognit'),
         (NETWORKAPI, 'Network API'),
         (GRAPHITE, 'Graphite'),
+        (STATSD, 'Statsd'),
     )
     name = models.CharField(verbose_name=_("Name"),
                                          max_length=100,
