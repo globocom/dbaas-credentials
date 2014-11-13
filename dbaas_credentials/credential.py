@@ -7,4 +7,4 @@ class Credential(object):
     
     @classmethod
     def get_credentials(cls, environment, integration):
-    	return models.Credential.objects.filter(environments=environment, integration_type=integration)[0]
+        return models.Credential.objects.filter(environments=environment, integration_type=integration)[0]

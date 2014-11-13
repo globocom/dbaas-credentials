@@ -29,6 +29,7 @@ class CredentialType(BaseModel):
     NETWORKAPI = 13
     GRAPHITE = 14
     STATSD = 15
+    REDIS = 16
 
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -46,6 +47,7 @@ class CredentialType(BaseModel):
         (NETWORKAPI, 'Network API'),
         (GRAPHITE, 'Graphite'),
         (STATSD, 'Statsd'),
+        (REDIS, 'Redis credentials'),
     )
     name = models.CharField(verbose_name=_("Name"),
                                          max_length=100,
