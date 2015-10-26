@@ -30,6 +30,7 @@ class CredentialType(BaseModel):
     GRAPHITE = 14
     STATSD = 15
     REDIS = 16
+    DBAAS_SERVICES_ANALYZING = 17
 
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -48,6 +49,7 @@ class CredentialType(BaseModel):
         (GRAPHITE, 'Graphite'),
         (STATSD, 'Statsd'),
         (REDIS, 'Redis credentials'),
+        (DBAAS_SERVICES_ANALYZING, 'DBaaSSAnalyzing')
     )
     name = models.CharField(verbose_name=_("Name"),
                                          max_length=100,
