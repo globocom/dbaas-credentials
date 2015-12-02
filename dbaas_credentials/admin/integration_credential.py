@@ -12,7 +12,7 @@ class ParameterAdmin(admin.TabularInline):
 
 class CredentialAdmin(admin.ModelAdmin):
     search_fields = ("endpoint",)
-    list_filter = ('integration_type')
+    list_filter = ("integration_type", )
     list_display = ("integration_type", "environment", "endpoint", "user", )
     filter_horizontal = ("environments",)
     save_on_top = True
