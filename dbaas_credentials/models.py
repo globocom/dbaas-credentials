@@ -2,7 +2,6 @@
 from __future__ import absolute_import, unicode_literals
 from util.models import BaseModel
 from django.db import models
-from django.core.cache import cache
 from django.utils.translation import ugettext_lazy as _
 from physical.models import Environment
 import logging
@@ -12,6 +11,7 @@ from django_extensions.db.fields.encrypted import EncryptedCharField
 CACHE_MISS = object()
 
 LOG = logging.getLogger(__name__)
+
 
 class CredentialType(BaseModel):
     CLOUDSTACK = 1
@@ -23,7 +23,7 @@ class CredentialType(BaseModel):
     MYSQL = 7
     MONGODB = 8
     DNSAPI = 9
-    ACLAPI= 10
+    ACLAPI = 10
     LAAS = 11
     LOGNIT = 12
     NETWORKAPI = 13
@@ -52,10 +52,10 @@ class CredentialType(BaseModel):
         (DBAAS_SERVICES_ANALYZING, 'DBaaSSAnalyzing')
     )
     name = models.CharField(verbose_name=_("Name"),
-                                         max_length=100,
-                                         help_text="Integration Name")
+                            max_length=100,
+                            help_text="Integration Name")
     type = models.IntegerField(choices=INTEGRATION_CHOICES,
-                                default=0)
+                               default=0)
 
     class Meta:
         permissions = (
@@ -70,23 +70,27 @@ class Credential(BaseModel):
                             help_text=_("User used to authenticate."),
                             blank=True,
                             null=True)
-    password = EncryptedCharField(verbose_name=_("Password"), max_length=255, blank=True, null=True)
-    integration_type = models.ForeignKey(CredentialType, related_name="integration_type", on_delete=models.PROTECT)
+    password = EncryptedCharField(verbose_name=_(
+        "Password"), max_length=255, blank=True, null=True)
+    integration_type = models.ForeignKey(
+        CredentialType, related_name="integration_type", on_delete=models.PROTECT)
     token = models.CharField(verbose_name=_("Authentication Token"),
-                            max_length=255,
-                            blank=True,
-                            null=True)
-    secret = EncryptedCharField(verbose_name=_("Secret"), max_length=255, blank=True, null=False)
+                             max_length=255,
+                             blank=True,
+                             null=True)
+    secret = EncryptedCharField(verbose_name=_(
+        "Secret"), max_length=255, blank=True, null=False)
     endpoint = models.CharField(verbose_name=_("Endpoint"),
-                            max_length=255,
-                            help_text=_("Usually it is in the form host:port. Authentication endpoint."),
-                            blank=False,
-                            null=False)
+                                max_length=255,
+                                help_text=_(
+                                    "Usually it is in the form host:port. Authentication endpoint."),
+                                blank=False,
+                                null=False)
     environments = models.ManyToManyField(Environment)
     project = models.CharField(verbose_name=_("Project"),
-                            max_length=255,
-                            blank=True,
-                            null=True)
+                               max_length=255,
+                               blank=True,
+                               null=True)
     team = models.CharField(verbose_name=_("Team"),
                             max_length=255,
                             blank=True,
@@ -112,22 +116,24 @@ class Credential(BaseModel):
         except Parameter.DoesNotExist:
             LOG.warning("Parameter %s not found" % name)
             return None
-        except Exception, e:
-            LOG.warning("ops.. could not retrieve parameter value for %s: %s" % (name, e))
+        except Exception as e:
+            LOG.warning(
+                "ops.. could not retrieve parameter value for %s: %s" % (name, e))
             return None
-
 
 
 class Parameter(BaseModel):
 
     name = models.CharField(verbose_name=_("Parameter name"), max_length=100)
     value = models.CharField(verbose_name=_("Parameter value"), max_length=255)
-    description = models.CharField(verbose_name=_("Description"), max_length=255, null=True, blank=True)
-    credential = models.ForeignKey(Credential, related_name="credential_parameters")
+    description = models.CharField(verbose_name=_(
+        "Description"), max_length=255, null=True, blank=True)
+    credential = models.ForeignKey(
+        Credential, related_name="credential_parameters")
 
     class Meta:
-    	unique_together = (
-    		('credential', 'name'),
-    	)
+        unique_together = (
+            ('credential', 'name'),
+        )
 
 simple_audit.register(Credential, CredentialType, Parameter)
