@@ -125,7 +125,7 @@ class Credential(BaseModel):
     def get_parameters_by_group(self, group_name):
         try:
             parameter_query = Parameter.objects.filter(
-                credential=self, name__contains=group_name
+                credential=self, name__startswith=group_name
             ).values('name', 'value')
 
             if len(parameter_query) < 1:
@@ -138,7 +138,7 @@ class Credential(BaseModel):
         except Exception as e:
             LOG.warning(
                 "ops.. could not retrieve parameters values for  group %s: %s" % (group_name, e))
-            return None
+            return {}
 
 
 class Parameter(BaseModel):
