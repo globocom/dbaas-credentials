@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
-from util.models import BaseModel
-from django.db import models
-from django.utils.translation import ugettext_lazy as _
-from physical.models import Environment
 import logging
 import simple_audit
+from django.db import models
+from django.utils.translation import ugettext_lazy as _
 from django_extensions.db.fields.encrypted import EncryptedCharField
+from util.models import BaseModel
+from physical.models import Environment
 
 CACHE_MISS = object()
 
@@ -65,37 +65,38 @@ class CredentialType(BaseModel):
 
 class Credential(BaseModel):
 
-    user = models.CharField(verbose_name=_("User"),
-                            max_length=100,
-                            help_text=_("User used to authenticate."),
-                            blank=True,
-                            null=True)
-    password = EncryptedCharField(verbose_name=_(
-        "Password"), max_length=255, blank=True, null=True)
+    user = models.CharField(
+        verbose_name=_("User"), max_length=100,
+        help_text=_("User used to authenticate."), blank=True, null=True
+    )
+    password = EncryptedCharField(
+        verbose_name=_("Password"), max_length=255, blank=True, null=True
+    )
     integration_type = models.ForeignKey(
-        CredentialType, related_name="integration_type", on_delete=models.PROTECT)
-    token = models.CharField(verbose_name=_("Authentication Token"),
-                             max_length=255,
-                             blank=True,
-                             null=True)
-    secret = EncryptedCharField(verbose_name=_(
-        "Secret"), max_length=255, blank=True, null=False)
-    endpoint = models.CharField(verbose_name=_("Endpoint"),
-                                max_length=255,
-                                help_text=_(
-                                    "Usually it is in the form host:port. Authentication endpoint."),
-                                blank=False,
-                                null=False)
+        CredentialType, related_name="integration_type",
+        on_delete=models.PROTECT
+    )
+    token = models.CharField(
+        verbose_name=_("Authentication Token"), max_length=255, blank=True,
+        null=True
+    )
+    secret = EncryptedCharField(
+        verbose_name=_("Secret"), max_length=255, blank=True, null=False
+    )
+    endpoint = models.CharField(
+        verbose_name=_("Endpoint"), max_length=255,
+        help_text=_(
+            "Usually it is in the form host:port. Authentication endpoint."
+        ), blank=False, null=False
+    )
     environments = models.ManyToManyField(Environment)
-    project = models.CharField(verbose_name=_("Project"),
-                               max_length=255,
-                               blank=True,
-                               null=True)
-    team = models.CharField(verbose_name=_("Team"),
-                            max_length=255,
-                            blank=True,
-                            null=True,
-                            default=None)
+    project = models.CharField(
+        verbose_name=_("Project"), max_length=255, blank=True, null=True
+    )
+    team = models.CharField(
+        verbose_name=_("Team"), max_length=255, blank=True, null=True,
+        default=None
+    )
 
     def __unicode__(self):
         return "%s" % (self.id)
@@ -126,10 +127,12 @@ class Parameter(BaseModel):
 
     name = models.CharField(verbose_name=_("Parameter name"), max_length=100)
     value = models.CharField(verbose_name=_("Parameter value"), max_length=255)
-    description = models.CharField(verbose_name=_(
-        "Description"), max_length=255, null=True, blank=True)
+    description = models.CharField(
+        verbose_name=_("Description"), max_length=255, null=True, blank=True
+    )
     credential = models.ForeignKey(
-        Credential, related_name="credential_parameters")
+        Credential, related_name="credential_parameters"
+    )
 
     class Meta:
         unique_together = (
