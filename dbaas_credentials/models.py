@@ -122,6 +122,25 @@ class Credential(BaseModel):
                 "ops.. could not retrieve parameter value for %s: %s" % (name, e))
             return None
 
+    def get_parameter_by_group(self, group_name):
+        try:
+            parameter_query = Parameter.objects.filter(
+                credential=self, name__contains=group_name
+            ).values('name', 'value')
+
+            if len(parameter_query) < 1:
+                raise Exception('No parameters available')
+
+            dict_exp = {
+                parameter['name'].split(group_name + '_')[1]: parameter['value']
+                for parameter in parameter_query
+            }
+            return dict_exp
+        except Exception as e:
+            LOG.warning(
+                "ops.. could not retrieve parameters values for  group %s: %s" % (group_name, e))
+            return None
+
 
 class Parameter(BaseModel):
 
