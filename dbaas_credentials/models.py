@@ -32,6 +32,7 @@ class CredentialType(BaseModel):
     REDIS = 16
     DBAAS_SERVICES_ANALYZING = 17
     FOXHA = 18
+    FOREMAN = 19
 
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -52,6 +53,7 @@ class CredentialType(BaseModel):
         (REDIS, 'Redis credentials'),
         (DBAAS_SERVICES_ANALYZING, 'DBaaSSAnalyzing'),
         (FOXHA, 'FoxHA')
+        (FOREMAN, 'Foreman')
     )
     name = models.CharField(verbose_name=_("Name"),
                             max_length=100,
