@@ -52,8 +52,8 @@ class CredentialType(BaseModel):
         (STATSD, 'Statsd'),
         (REDIS, 'Redis credentials'),
         (DBAAS_SERVICES_ANALYZING, 'DBaaSSAnalyzing'),
-        (FOXHA, 'FoxHA')
-        (FOREMAN, 'Foreman')
+        (FOXHA, 'FoxHA'),
+        (FOREMAN, 'Foreman'),
     )
     name = models.CharField(verbose_name=_("Name"),
                             max_length=100,
