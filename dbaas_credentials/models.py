@@ -56,6 +56,8 @@ class CredentialType(BaseModel):
         (DBAAS_SERVICES_ANALYZING, 'DBaaSSAnalyzing'),
         (FOXHA, 'FoxHA'),
         (FOREMAN, 'Foreman'),
+        (MYSQL_REPLICA, 'MySQL Replica'),
+        (MYSQL_FOXHA, 'MySQL FoxHA'),
     )
     name = models.CharField(verbose_name=_("Name"),
                             max_length=100,
