@@ -33,6 +33,8 @@ class CredentialType(BaseModel):
     DBAAS_SERVICES_ANALYZING = 17
     FOXHA = 18
     FOREMAN = 19
+    MYSQL_REPLICA = 20
+    MYSQL_FOXHA = 21
 
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
