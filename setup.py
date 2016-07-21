@@ -19,7 +19,7 @@ history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 setup(
     name='dbaas_credentials',
-    version='1.1.7',
+    version='1.1.8',
     description='A credential manager for DBaaS integrations',
     long_description=readme + '\n\n' + history,
     author='Felippe da Motta Raposo',
