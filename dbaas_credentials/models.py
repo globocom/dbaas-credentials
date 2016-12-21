@@ -36,6 +36,7 @@ class CredentialType(BaseModel):
     MYSQL_REPLICA = 20
     MYSQL_FOXHA = 21
     FAAS = 22
+    GRAFANA = 23
 
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -60,6 +61,7 @@ class CredentialType(BaseModel):
         (MYSQL_REPLICA, 'MySQL Replica'),
         (MYSQL_FOXHA, 'MySQL FoxHA'),
         (FAAS, 'FaaS'),
+        (GRAFANA, 'Grafana'),
     )
     name = models.CharField(verbose_name=_("Name"),
                             max_length=100,
