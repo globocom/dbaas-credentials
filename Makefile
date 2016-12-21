@@ -58,3 +58,7 @@ dist: clean
 	python setup.py sdist
 	python setup.py bdist_wheel
 	ls -l dist
+
+fake_deploy:
+	rm /Users/$(USER)/.virtualenvs/dbaas/lib/python2.7/site-packages/dbaas_credentials/*.pyc
+	cp -r dbaas_credentials/ /Users/$(USER)/.virtualenvs/dbaas/lib/python2.7/site-packages/dbaas_credentials/
