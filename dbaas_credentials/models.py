@@ -27,7 +27,6 @@ class CredentialType(BaseModel):
     LAAS = 11
     LOGNIT = 12
     NETWORKAPI = 13
-    GRAPHITE = 14
     STATSD = 15
     REDIS = 16
     DBAAS_SERVICES_ANALYZING = 17
@@ -53,7 +52,6 @@ class CredentialType(BaseModel):
         (LAAS, 'Log as a Service'),
         (LOGNIT, 'Lognit'),
         (NETWORKAPI, 'Network API'),
-        (GRAPHITE, 'Graphite'),
         (STATSD, 'Statsd'),
         (REDIS, 'Redis credentials'),
         (DBAAS_SERVICES_ANALYZING, 'DBaaSSAnalyzing'),
