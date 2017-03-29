@@ -23,10 +23,7 @@ class CredentialType(BaseModel):
     MONGODB = 8
     DNSAPI = 9
     ACLAPI = 10
-    LAAS = 11
-    LOGNIT = 12
     NETWORKAPI = 13
-    STATSD = 15
     REDIS = 16
     DBAAS_SERVICES_ANALYZING = 17
     FOXHA = 18
@@ -47,10 +44,7 @@ class CredentialType(BaseModel):
         (MONGODB, 'MongoDB credentials'),
         (DNSAPI, 'DNS API'),
         (ACLAPI, 'ACL API'),
-        (LAAS, 'Log as a Service'),
-        (LOGNIT, 'Lognit'),
         (NETWORKAPI, 'Network API'),
-        (STATSD, 'Statsd'),
         (REDIS, 'Redis credentials'),
         (DBAAS_SERVICES_ANALYZING, 'DBaaSSAnalyzing'),
         (FOXHA, 'FoxHA'),
