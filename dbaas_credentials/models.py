@@ -35,6 +35,7 @@ class CredentialType(BaseModel):
     GRAYLOG = 24
     HOST_PROVIDER = 25
     VOLUME_PROVIDER = 26
+    PKI = 27
 
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -57,7 +58,8 @@ class CredentialType(BaseModel):
         (GRAFANA, 'Grafana'),
         (GRAYLOG, 'Graylog'),
         (HOST_PROVIDER, 'Host Provider'),
-        (VOLUME_PROVIDER, 'Volume Provider')
+        (VOLUME_PROVIDER, 'Volume Provider'),
+        (PKI, 'Public key infrastructure'),
     )
     name = models.CharField(verbose_name=_("Name"),
                             max_length=100,
