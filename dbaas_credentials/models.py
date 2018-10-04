@@ -37,6 +37,7 @@ class CredentialType(BaseModel):
     VOLUME_PROVIDER = 26
     PKI = 27
     ACLFROMHELL = 28
+    TELEGRAF = 29
 
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -62,6 +63,7 @@ class CredentialType(BaseModel):
         (VOLUME_PROVIDER, 'Volume Provider'),
         (PKI, 'Public key infrastructure'),
         (ACLFROMHELL, 'Acl from hell'),
+        (TELEGRAF, 'Telegraf'),
     )
     name = models.CharField(verbose_name=_("Name"),
                             max_length=100,
