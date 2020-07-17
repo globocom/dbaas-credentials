@@ -80,6 +80,7 @@ class CredentialType(BaseModel):
         permissions = (
             ("view_integrationtype", "Can view integration type."),
         )
+        ordering = ['name']
 
 
 class Credential(BaseModel):
