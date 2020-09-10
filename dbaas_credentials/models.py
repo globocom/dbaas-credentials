@@ -39,6 +39,7 @@ class CredentialType(BaseModel):
     ACLFROMHELL = 28
     TELEGRAF = 29
     VIP_PROVIDER = 30
+    KIBANA_LOG = 32
 
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -66,6 +67,7 @@ class CredentialType(BaseModel):
         (ACLFROMHELL, 'Acl from hell'),
         (TELEGRAF, 'Telegraf'),
         (VIP_PROVIDER, 'Vip Provider'),
+        (KIBANA_LOG, 'Kibana Log'),
     )
     name = models.CharField(verbose_name=_("Name"),
                             max_length=100,
