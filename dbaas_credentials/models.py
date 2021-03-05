@@ -42,6 +42,7 @@ class CredentialType(BaseModel):
     VIP_PROVIDER = 30
     KUBERNETES = 31
     KIBANA_LOG = 32
+    SQLSERVER = 33
 
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -71,6 +72,7 @@ class CredentialType(BaseModel):
         (VIP_PROVIDER, 'Vip Provider'),
         (KUBERNETES, 'Kubernetes'),
         (KIBANA_LOG, 'Kibana Log'),
+        (SQLSERVER, 'SQL Server'),
     )
     name = models.CharField(verbose_name=_("Name"),
                             max_length=100,
