@@ -19,11 +19,11 @@ history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 setup(
     name='dbaas_credentials',
-    version='1.1.24',
+    version='1.2.5',
     description='A credential manager for DBaaS integrations',
     long_description=readme + '\n\n' + history,
-    author='Felippe da Motta Raposo',
-    author_email='raposo.felippe@gmail.com',
+    author='DBaaS',
+    author_email='dbaas@g.globo',
     url='https://github.com/globocom/dbaas_credentials',
     packages=[
         'dbaas_credentials',

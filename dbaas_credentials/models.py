@@ -4,7 +4,8 @@ import logging
 import simple_audit
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from django_extensions.db.fields.encrypted import EncryptedCharField
+from django_extensions.db.fields.encrypted import (EncryptedCharField,
+                                                   EncryptedTextField)
 from util.models import BaseModel
 from physical.models import Environment
 
@@ -39,6 +40,7 @@ class CredentialType(BaseModel):
     ACLFROMHELL = 28
     TELEGRAF = 29
     VIP_PROVIDER = 30
+    KUBERNETES = 31
     KIBANA_LOG = 32
 
     INTEGRATION_CHOICES = (
@@ -67,6 +69,7 @@ class CredentialType(BaseModel):
         (ACLFROMHELL, 'Acl from hell'),
         (TELEGRAF, 'Telegraf'),
         (VIP_PROVIDER, 'Vip Provider'),
+        (KUBERNETES, 'Kubernetes'),
         (KIBANA_LOG, 'Kibana Log'),
     )
     name = models.CharField(verbose_name=_("Name"),
@@ -79,6 +82,7 @@ class CredentialType(BaseModel):
         permissions = (
             ("view_integrationtype", "Can view integration type."),
         )
+        ordering = ['name']
 
 
 class Credential(BaseModel):
@@ -89,6 +93,9 @@ class Credential(BaseModel):
     )
     password = EncryptedCharField(
         verbose_name=_("Password"), max_length=255, blank=True, null=True
+    )
+    config = EncryptedTextField(
+        verbose_name=_("Config"), blank=True, null=True
     )
     integration_type = models.ForeignKey(
         CredentialType, related_name="integration_type",
