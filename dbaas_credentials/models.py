@@ -96,6 +96,9 @@ class Credential(BaseModel):
     password = EncryptedCharField(
         verbose_name=_("Password"), max_length=255, blank=True, null=True
     )
+    private_key = EncryptedTextField(
+        verbose_name=_("Private Key"), blank=True, null=True
+    )
     config = EncryptedTextField(
         verbose_name=_("Config"), blank=True, null=True
     )
