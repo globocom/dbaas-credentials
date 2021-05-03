@@ -48,11 +48,12 @@ docs:
 	open docs/_build/html/index.html
 
 release:
-	python setup.py sdist upload
+	python setup.py sdist bdist_wheel
+	twine upload dist/*
 
 release_globo:
-	python setup.py sdist upload -r ipypiglobo
-	python setup.py sdist upload -r pypiglobo
+	python setup.py sdist bdist_wheel
+	twine upload --repository-url https://artifactory.globoi.com/artifactory/api/pypi/pypi-local dist/*
 
 dist: clean
 	python setup.py sdist
