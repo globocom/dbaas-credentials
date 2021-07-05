@@ -43,6 +43,7 @@ class CredentialType(BaseModel):
     KUBERNETES = 31
     KIBANA_LOG = 32
     SQLSERVER = 33
+    TEAMS_API = 34
 
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -73,6 +74,7 @@ class CredentialType(BaseModel):
         (KUBERNETES, 'Kubernetes'),
         (KIBANA_LOG, 'Kibana Log'),
         (SQLSERVER, 'SQL Server'),
+        (TEAMS_API, 'Teams API'),
     )
     name = models.CharField(verbose_name=_("Name"),
                             max_length=100,
