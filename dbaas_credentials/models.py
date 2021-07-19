@@ -44,6 +44,7 @@ class CredentialType(BaseModel):
     KIBANA_LOG = 32
     SQLSERVER = 33
     TEAMS_API = 34
+    GCP_LOG = 35
 
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -75,6 +76,7 @@ class CredentialType(BaseModel):
         (KIBANA_LOG, 'Kibana Log'),
         (SQLSERVER, 'SQL Server'),
         (TEAMS_API, 'Teams API'),
+        (GCP_LOG, 'GCP Log'),
     )
     name = models.CharField(verbose_name=_("Name"),
                             max_length=100,
