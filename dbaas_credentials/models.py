@@ -45,6 +45,7 @@ class CredentialType(BaseModel):
     SQLSERVER = 33
     TEAMS_API = 34
     GCP_LOG = 35
+    LIBERA_3 = 36
 
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -77,6 +78,7 @@ class CredentialType(BaseModel):
         (SQLSERVER, 'SQL Server'),
         (TEAMS_API, 'Teams API'),
         (GCP_LOG, 'GCP Log'),
+        (LIBERA_3, 'Libera 3'),
     )
     name = models.CharField(verbose_name=_("Name"),
                             max_length=100,
