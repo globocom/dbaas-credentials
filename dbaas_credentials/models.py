@@ -46,6 +46,7 @@ class CredentialType(BaseModel):
     TEAMS_API = 34
     GCP_LOG = 35
     LIBERA_3 = 36
+    PUPPET = 37
 
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -79,6 +80,7 @@ class CredentialType(BaseModel):
         (TEAMS_API, 'Teams API'),
         (GCP_LOG, 'GCP Log'),
         (LIBERA_3, 'Libera 3'),
+        (PUPPET, 'Puppet')
     )
     name = models.CharField(verbose_name=_("Name"),
                             max_length=100,
