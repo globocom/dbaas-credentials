@@ -48,6 +48,7 @@ class CredentialType(BaseModel):
     LIBERA_3 = 36
     PUPPET = 37
     GCP_COST = 38
+    ZABBIX_READ_ONLY = 39
 
     INTEGRATION_CHOICES = (
         (CLOUDSTACK, 'Cloud Stack'),
@@ -82,7 +83,8 @@ class CredentialType(BaseModel):
         (GCP_LOG, 'GCP Log'),
         (LIBERA_3, 'Libera 3'),
         (PUPPET, 'Puppet'),
-        (GCP_COST, 'GCP Cost')
+        (GCP_COST, 'GCP Cost'),
+        (ZABBIX_READ_ONLY, 'Zabbibx ReadOnly')
     )
     name = models.CharField(verbose_name=_("Name"),
                             max_length=100,
